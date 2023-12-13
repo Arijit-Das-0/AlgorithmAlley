@@ -8,22 +8,29 @@
 
     <!-- Optional: Some additional styling specific to the dashboard -->
     <style>
-        .question-table th, .question-table td {
+        .question-table th,
+        .question-table td {
             border: 1px solid #ccc;
             padding: 8px;
+            text-align: center; /* Center aligning text in table cells */
         }
-        .row-number, .date, .name, .tag {
+        .row-number,
+        .date,
+        .name,
+        .link {
             font-weight: bold;
             font-size: 14px;
         }
-        .date, .name, .tag {
+        .date,
+        .name,
+        .link {
             color: #555;
         }
     </style>
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="text-center">Question Sheet</h1>
+        <h1 class="text-center">AlgorithmAlley</h1>
         
         <table class="table question-table">
             <thead>
@@ -31,15 +38,21 @@
                     <th class="row-number">No.</th>
                     <th class="date">Date</th>
                     <th class="name">Question Name</th>
-                    <th class="tag">Tag</th>
+                    <th class="link">Link</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="row-number">1</td>
-                    <td class="date">2023-12-01</td>
+                    <td class="date">12 Dec 2023</td>
+                    <td class="name"><a href="max_gold_problem.html">Gold Mine Problem</a></td>
+                    <td class="link"><a href="https://www.geeksforgeeks.org/problems/gold-mine-problem2608/1">POTD</a></td>
+                </tr>
+                <tr>
+                    <td class="row-number">1</td>
+                    <td class="date">13 Dec 2023</td>
                     <td class="name"><a href="binary_strings_problem.html">Binary Strings Problem</a></td>
-                    <td class="tag">Tag 1</td>
+                    <td class="link"><a href="https://www.geeksforgeeks.org/problems/consecutive-1s-not-allowed1912/1">POTD</a></td>
                 </tr>
                 <!-- Add more rows in the same format -->
             </tbody>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maximum Gold Collection in a Mine</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Your custom CSS -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Maximum Gold Collection in a Mine</h1>
+        
+        <div class="card p-4">
+            <h2>Problem Statement</h2>
+            <p>Given a gold mine M of dimensions (n x m), each field in this mine contains a positive integer representing the amount of gold in tons. The miner can start from any row in the first column and can move to adjacent cells diagonally up-right, right, or diagonally down-right. Find the maximum amount of gold the miner can collect until they can no longer move.</p>
+            <h3>Example 1:</h3>
+            <pre>
+<code>Input: n = 3, m = 3
+
+    M = {{1, 3, 3},
+        {2, 1, 4},
+        {0, 6, 4}};
+
+Output: 12</code>
+            </pre>
+            <p>Explanation: The path is {(1,0) -> (2,1) -> (2,2)}.</p>
+            <h3>Example 2:</h3>
+            <pre>
+<code>Input: n = 4, m = 4
+
+    M = {{1, 3, 1, 5},
+        {2, 2, 4, 1},
+        {5, 0, 2, 3},
+        {0, 6, 1, 2}};
+
+Output: 16</code>
+            </pre>
+            <p>Explanation: The path is {(2,0) -> (3,1) -> (2,2) -> (2,3)} or {(2,0) -> (1,1) -> (1,2) -> (0,3)}.</p>
+
+            <h3>Code</h3>
+            <pre>
+                <code>
+                    int maxGold(int n, int m, vector<vector<int>> M)
+                    { 
+                        vector<vector<int>> dp(n, vector<int>(m, 0));
+                    
+                        // Initialize the rightmost column of the dp table
+                        for (int i = 0; i < n; ++i) {
+                            dp[i][m - 1] = M[i][m - 1];
+                        }
+                    
+                        // Start filling the dp table from the second last column
+                        for (int j = m - 2; j >= 0; --j) {
+                            for (int i = 0; i < n; ++i) {
+                                int right = dp[i][j + 1];
+                                int rightUp = (i > 0) ? dp[i - 1][j + 1] : 0;
+                                int rightDown = (i < n - 1) ? dp[i + 1][j + 1] : 0;
+                    
+                                // Update the dp table
+                                dp[i][j] = M[i][j] + max(right, max(rightUp, rightDown));
+                            }
+                        }
+                    
+                        // Find the maximum gold in the first column
+                        int maxGold = 0;
+                        for (int i = 0; i < n; ++i) {
+                            maxGold = max(maxGold, dp[i][0]);
+                        }
+                    
+                        return maxGold;
+                    }
+                </code>
+            </pre>
+            <!-- Complexity Section -->
+            <h2>Complexity</h2>
+            <p>Time Complexity: O(n*m)</p>
+            <p>Space Complexity: O(n*m)</p>
+         <!-- Back Button -->
+         <a href="index.html" class="btn btn-primary">Back to Dashboard</a>    
+        </div>
+    </div>
+</body>
+</html>
