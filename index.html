@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Your custom CSS -->
+
+    <!-- Optional: Some additional styling specific to the dashboard -->
+    <style>
+        .question-table th, .question-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        .row-number, .date, .name, .tag {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .date, .name, .tag {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Question Sheet</h1>
+        
+        <table class="table question-table">
+            <thead>
+                <tr>
+                    <th class="row-number">No.</th>
+                    <th class="date">Date</th>
+                    <th class="name">Question Name</th>
+                    <th class="tag">Tag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="row-number">1</td>
+                    <td class="date">2023-12-01</td>
+                    <td class="name"><a href="binary_strings_problem.html">Binary Strings Problem</a></td>
+                    <td class="tag">Tag 1</td>
+                </tr>
+                <!-- Add more rows in the same format -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binary Strings without Consecutive 1's</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Your custom CSS -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Count Binary Strings without Consecutive 1's</h1>
+        
+        <div class="card p-4">
+            <h2>Problem Statement</h2>
+            <p>Given a positive integer N, count all possible distinct binary strings of length N such that there are no consecutive 1’s. Output your answer modulo 10<sup>9</sup> + 7.</p>
+            <h3>Example:</h3>
+            <p><strong>Input:</strong> N = 3</p>
+            <p><strong>Output:</strong> 5</p>
+            <pre>
+                <code>Explanation:
+                5 strings are (000, 001, 010, 100, 101).</code>
+            </pre>
+            <h3>Code</h3>
+            <pre>
+                <code>
+                    ll countStrings(int n) {
+                        long long first = 1;
+                        long long second = 2;
+                        long long mod = 1e9+7;
+                        for(int i=2; i&lt;=n; i++){
+                            long long sum = (first+second)%mod;
+                            first = second;
+                            second = sum;
+                        }
+                        return second;
+                    }
+                </code>
+            </pre>
+            <!-- Note Section -->
+            <h2>Notes</h2>
+            <p>This is a note section. You can add notes or additional information related to the problem here.</p>
+        </div>
+    </div>
+</body>
+</html>
