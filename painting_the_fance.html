@@ -38,9 +38,26 @@ Total possible combinations will be 4x4=16.</code>
             <h3>Code</h3>
             <pre>
                 <code>
-long long countWays(int n, int k){
-    // Your code implementation here
-}
+                    long long countWays(int n, int k){
+                        // There are k ways to color first post
+                        long long total = k;
+                        int mod = 1000000007;
+                        // There are 0 ways for single post to
+                        // violate (same color) and k ways to
+                        // not violate (different color)
+                        long long same = 0, diff = k;
+                     
+                        // Fill for 2 posts onwards
+                        for (int i = 2; i <= n; i++) {
+                            // Current same is same as previous diff
+                            same = diff;
+                            // We always have k-1 choices for next post
+                            diff = total * (k - 1)% mod;
+                            // Total choices till i.
+                            total = (same + diff) % mod;
+                        }
+                        return total;
+                    }
                 </code>
             </pre>
             <!-- Complexity Section -->
