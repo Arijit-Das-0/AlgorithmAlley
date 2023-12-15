@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reach the Nth Point</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Your custom CSS -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Reach the Nth Point</h1>
+        
+        <div class="card p-4">
+            <h2>Problem Statement</h2>
+            <p>There are N points on the road. You can step ahead by 1 or 2. Starting from point 0 and moving to point i+1 after taking a step of length one, find the number of ways you can reach point N.</p>
+            <h3>Example 1:</h3>
+            <pre>
+<code>Input:
+N = 4
+Output:
+5
+Explanation:
+Three ways to reach 4th point:
+{1, 1, 1, 1}, {1, 1, 2}, {1, 2, 1}, {2, 1, 1}, {2, 2}</code>
+            </pre>
+            <h3>Example 2:</h3>
+            <pre>
+<code>Input:
+N = 5
+Output:
+8
+Explanation:
+Eight ways to reach 5th point:
+{1, 1, 1, 1, 1}, {1, 1, 1, 2}, {1, 1, 2, 1}, {1, 2, 1, 1}, {2, 1, 1, 1}, {1, 2, 2}, {2, 1, 2}, {2, 2, 1}</code>
+            </pre>
+
+            <h3>Code</h3>
+            <pre>
+                <code>
+int nthPoint(int n){
+    int first = 1;
+    int second = 2;
+    int mod = 1e9+7;
+    if(n == 1) return 1;
+    for(int i=2; i &lt;n ; i++){
+        int sum = (first+second)%mod;
+        first = second;
+        second = sum;
+    }
+    return second;
+}
+                </code>
+            </pre>
+            <!-- Complexity Section -->
+            <h2>Complexity</h2>
+            <p>Time Complexity: O(N)</p>
+            <p>Space Complexity: O(1)</p>
+         <!-- Back Button -->
+         <a href="index.html" class="btn btn-primary">Back to Dashboard</a>    
+        </div>
+    </div>
+</body>
+</html>
