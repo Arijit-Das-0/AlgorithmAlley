@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Max Sum without Adjacents</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Your custom CSS -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Max Sum without Adjacents</h1>
+        
+        <div class="card p-4">
+            <h2>Problem Statement</h2>
+            <p>Given an array Arr of size N containing positive integers. Find the maximum sum of any possible subsequence such that no two numbers in the subsequence should be adjacent in Arr.</p>
+            <h3>Example 1:</h3>
+            <pre>
+<code>Input:
+N = 6
+Arr[] = {5, 5, 10, 100, 10, 5}
+Output: 110
+Explanation: If you take indices 0, 3, and 5, then Arr[0]+Arr[3]+Arr[5] = 5+100+5 = 110.</code>
+            </pre>
+            <h3>Example 2:</h3>
+            <pre>
+<code>Input:
+N = 4
+Arr[] = {3, 2, 7, 10}
+Output: 13
+Explanation: 3 and 10 forms a non-continuous subsequence with maximum sum.</code>
+            </pre>
+
+            <h3>Code</h3>
+            <pre>
+                <code>
+int findMaxSum(int *arr, int n) {
+    int lastPrev = 0;
+    int prev = arr[0];
+    int curr = 0;
+
+    for (int i = 1; i < n; ++i) {
+        curr = max(prev, arr[i] + lastPrev);
+        lastPrev = prev;
+        prev = curr;
+    }
+
+    return max(lastPrev, prev);
+}
+                </code>
+            </pre>
+            <!-- Complexity Section -->
+            <h2>Complexity</h2>
+            <p>Time Complexity: O(N)</p>
+            <p>Auxiliary Space: O(1)</p>
+         <!-- Back Button -->
+         <a href="index.html" class="btn btn-primary">Back to Dashboard</a>    
+        </div>
+    </div>
+</body>
+</html>

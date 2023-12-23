@@ -49,7 +49,6 @@ long maximumSumSubarray(int K, vector<int> &Arr, int N) {
     }
 
     windowSum = maxSum;
-
     // Sliding window to find the maximum sum
     for (int i = K; i < N; ++i) {
         windowSum += Arr[i] - Arr[i - K]; // Slide the window by adding the next element and removing the first element of the window

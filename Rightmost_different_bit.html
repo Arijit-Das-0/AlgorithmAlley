@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rightmost Different Bit</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Your custom CSS -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Rightmost Different Bit</h1>
+        
+        <div class="card p-4">
+            <h2>Problem Statement</h2>
+            <p>Given two numbers M and N, find the position of the rightmost different bit in their binary representation. If both M and N are the same, then return -1.</p>
+            <h3>Example 1:</h3>
+            <pre>
+<code>Input: 
+M = 11, N = 9
+Output: 
+2
+Explanation: 
+Binary representation of the given numbers are: 1011 and 1001, 2nd bit from the right is different.</code>
+            </pre>
+            <h3>Example 2:</h3>
+            <pre>
+<code>Input: 
+M = 52, N = 4
+Output: 
+5
+Explanation: 
+Binary representation of the given numbers are: 110100 and 0100, 5th-bit from the right is different.</code>
+            </pre>
+
+            <h3>Code</h3>
+            <pre>
+                <code>
+int posOfRightMostDiffBit(int m, int n)
+{
+    if (m == n)
+        return -1;
+        
+    int res = m ^ n;
+    res = res & (-res);
+    return log2(res) + 1;
+}
+                </code>
+            </pre>
+            <!-- Complexity Section -->
+            <h2>Complexity</h2>
+            <p>Time Complexity: O(max(log M, log N))</p>
+            <p>Auxiliary Space: O(1)</p>
+         <!-- Back Button -->
+         <a href="index.html" class="btn btn-primary">Back to Dashboard</a>    
+        </div>
+    </div>
+</body>
+</html>

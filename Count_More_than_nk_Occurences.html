@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Count More than N/K Occurences</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Your custom CSS -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Count More than N/K Occurrences</h1>
+        
+        <div class="card p-4">
+            <h2>Problem Statement</h2>
+            <p>Given an array arr of size N and an element k. Find the count of elements in the array that appear more than n/k times.</p>
+            <h3>Example 1:</h3>
+            <pre>
+<code>Input:
+N = 8
+arr = [3,1,2,2,1,2,3,3]
+k = 4
+Output: 
+2
+Explanation: 
+In the given array, 3 and 2 are the only elements that appear more than n/k times.</code>
+            </pre>
+            <h3>Example 2:</h3>
+            <pre>
+<code>Input:
+N = 4
+arr = [2,3,3,2]
+k = 3
+Output: 
+2
+Explanation: 
+In the given array, 3 and 2 are the only elements that appear more than n/k times. So the count of elements are 2.</code>
+            </pre>
+
+            <h3>Code</h3>
+            <pre>
+                <code>
+int countOccurence(int arr[], int n, int k) {
+    int ans=0;
+    unordered_map<int,int> mp;
+    for(int i=0;i<n;i++) mp[arr[i]]++;
+    for(auto it: mp){
+        if(it.second> n/k) ans++;
+    }
+    return ans;
+}
+                </code>
+            </pre>
+            <!-- Complexity Section -->
+            <h2>Complexity</h2>
+            <p>Time Complexity: O(N)</p>
+            <p>Auxiliary Space: O(N)</p>
+         <!-- Back Button -->
+         <a href="index.html" class="btn btn-primary">Back to Dashboard</a>    
+        </div>
+    </div>
+</body>
+</html>

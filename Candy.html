@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Candy</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Your custom CSS -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Candy</h1>
+        
+        <div class="card p-4">
+            <h2>Problem Statement</h2>
+            <p>There are N children standing in a line. Each child is assigned a rating value given in the integer array ratings.
+            You are giving candies to these children subjected to the following requirements:</p>
+            <ul>
+                <li>Each child must have at least one candy.</li>
+                <li>Children with a higher rating than their neighbors get more candies than their neighbors.</li>
+            </ul>
+            <p>Return the minimum number of candies you need to distribute.</p>
+            <h3>Example 1:</h3>
+            <pre>
+<code>Input:
+N = 3
+ratings = [1, 0, 2]
+Output: 
+5
+Explanation: 
+You can allocate to the first, second and third child with 2, 1, 2 candies respectively.</code>
+            </pre>
+            <h3>Example 2:</h3>
+            <pre>
+<code>Input:
+N = 3
+ratings = [1, 2, 2]
+Output: 
+4
+Explanation: 
+You can allocate to the first, second and third child with 1, 2, 1 candies respectively. The third child gets 1 candy because it satisfies the above two conditions.</code>
+            </pre>
+
+            <h3>Code</h3>
+            <pre>
+                <code>
+int minCandy(int N, vector<int> &ratings) {
+    vector<int> left(N, 1), right(N, 1);
+    
+    for (int i = 1; i < N; ++i)
+        if (ratings[i] > ratings[i - 1])
+            left[i] += left[i - 1];
+
+    for (int i = N - 2; i >= 0; i--)
+        if (ratings[i] > ratings[i + 1])
+            right[i] += right[i + 1];
+
+    int sum = 0;
+    for (int i = 0; i < N; i++)
+        sum += max(left[i], right[i]);
+
+    return sum;
+}
+                </code>
+            </pre>
+            <!-- Complexity Section -->
+            <h2>Complexity</h2>
+            <p>Time Complexity: O(N)</p>
+            <p>Auxiliary Space: O(N)</p>
+         <!-- Back Button -->
+         <a href="index.html" class="btn btn-primary">Back to Dashboard</a>    
+        </div>
+    </div>
+</body>
+</html>
