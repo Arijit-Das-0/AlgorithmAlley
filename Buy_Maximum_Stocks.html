@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buy Maximum Stocks</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Your custom CSS -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Buy Maximum Stocks</h1>
+        
+        <div class="card p-4">
+            <h2>Problem Statement</h2>
+            <p>In a stock market, there is a product with its infinite stocks. The stock prices are given for N days, where price[i] denotes the price of the stock on the ith day. A customer can buy at most i stock on the ith day. Find the maximum number of stocks a customer can buy with an initial amount of k.</p>
+            <h3>Example 1:</h3>
+            <pre>
+<code>Input:
+price = [10,7,19]
+k = 45
+Output: 
+4
+Explanation: 
+A customer purchases 1 stock on day 1, 2 stocks on day 2, and 1 stock on day 3 for 10, 7 * 2 = 14 and 19 respectively.
+Hence, the total amount is 10 + 14 + 19 = 43 and the number of stocks purchased is 4.</code>
+            </pre>
+            <h3>Example 2:</h3>
+            <pre>
+<code>Input: 
+price = [7,10,4]
+k = 100
+Output: 
+6
+Explanation:
+Buy on all 3 days.</code>
+            </pre>
+
+            <h3>Code</h3>
+            <pre>
+                <code>
+int buyMaximumProducts(int n, int k, int price[]){
+    vector<pair<int, int>> v;
+    for (int i = 0; i < n; ++i)
+        v.push_back({price[i], i + 1});
+
+    sort(v.begin(), v.end());
+
+    int ans = 0;
+
+    for (auto it: v) {
+        int maxBuy = min(k / it.first, it.second);
+        ans += maxBuy;
+        k -= it.first * maxBuy;
+    }
+    return ans;
+}
+                </code>
+            </pre>
+            <!-- Complexity Section -->
+            <h2>Complexity</h2>
+            <p>Time Complexity: O(NlogN)</p>
+            <p>Auxiliary Space: O(N)</p>
+         <!-- Back Button -->
+         <a href="index.html" class="btn btn-primary">Back to Dashboard</a>    
+        </div>
+    </div>
+</body>
+</html>
